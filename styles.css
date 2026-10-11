@@ -542,3 +542,118 @@ body.viewer-open{overflow:hidden}
 .editorial-article-reverse .editorial-article-image{order:2}
 .editorial-article-reverse .editorial-article-copy{order:3}
 @media(max-width:800px){.editorial-article{grid-template-columns:1fr;gap:20px;padding:48px 6%}.editorial-article-number{order:0}.editorial-article-image{order:1!important;max-width:100%}.editorial-article-image img{aspect-ratio:5/4}.editorial-article-copy{order:2!important}.editorial-article-copy h2{font-size:clamp(32px,8vw,46px)}}
+
+
+/* =========================================================
+   VELMORA — ALL-DEVICE RESPONSIVE OVERRIDES
+   Appended after the existing stylesheet to preserve the design.
+   Covers small phones (320px), phones, tablets, laptops,
+   desktop and wide displays.
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { width: 100%; max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+body { width: 100%; max-width: 100%; min-width: 320px; overflow-x: clip; }
+img, picture, video, canvas, svg { max-width: 100%; }
+img { height: auto; }
+input, select, textarea, button { max-width: 100%; font: inherit; }
+button, a, input, select, textarea { touch-action: manipulation; }
+.container, main, section, header, footer, nav, article, aside { min-width: 0; }
+
+/* Prevent long content and flex/grid children from forcing overflow. */
+.nav, .navlinks, .navright, .section-head, .footer-inner,
+.product-card, .product-meta, .detail-layout, .detail-info,
+.gallery, .contact-grid, .shop-controls, .editorial-article,
+.editorial-feature, .newsletter form { min-width: 0; }
+
+/* Fluid media and typography across viewport sizes. */
+.hero h1, .page-title, .section h2, .editorial-article-copy h2 {
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+@media (min-width: 1500px) {
+  .container, .nav, .footer-inner { max-width: 1440px; }
+  .hero { min-height: min(780px, 72vw); }
+}
+
+@media (max-width: 900px) {
+  .nav { gap: 16px; padding: 16px 5%; }
+  .navlinks { gap: clamp(10px, 2vw, 20px); }
+  .hero { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); min-height: 520px; }
+  .hero-copy { padding-left: 7%; padding-right: 7%; }
+  .hero-image { min-height: 420px; }
+  .products { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 14px; }
+  .detail-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 4%; }
+  .contact-grid { gap: 36px; }
+}
+
+@media (max-width: 760px) {
+  .nav { flex-wrap: wrap; padding: 12px 5%; gap: 10px 14px; }
+  .wordmark { font-size: clamp(21px, 5vw, 27px); letter-spacing: .16em; }
+  .menu-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
+  .navlinks { gap: 12px; }
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .hero-copy { padding: 52px 6%; }
+  .hero h1 { font-size: clamp(38px, 9vw, 64px); }
+  .hero-image { min-height: clamp(320px, 82vw, 560px); }
+  .section { padding: clamp(48px, 8vw, 72px) 0; }
+  .section-head { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 12px; }
+  .product-card { width: 100%; }
+  .product-card img { display: block; width: 100%; }
+  .shop-controls { align-items: stretch; flex-direction: column; gap: 12px; }
+  .shop-controls select, .shop-controls input { width: 100%; min-width: 0; }
+  .detail-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 22px; }
+  .detail-info { width: 100%; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gallery img:first-child { grid-column: 1 / -1; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .editorial-feature { grid-template-columns: minmax(0, 1fr); }
+  .editorial-feature-copy { padding: 38px 6%; }
+  .editorial-article { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .footer-inner { gap: 26px; }
+  .newsletter { padding: 56px 6%; }
+  .newsletter form { width: 100%; }
+  .newsletter input { min-width: 0; width: 100%; }
+}
+
+@media (max-width: 520px) {
+  .announcement { padding: 9px 10px; font-size: 9px; letter-spacing: .11em; line-height: 1.5; }
+  .nav { padding: 10px 4%; }
+  .navright { gap: 10px; font-size: 9px; }
+  .navlinks { max-width: 100%; flex-wrap: wrap; }
+  .container { padding-left: 5%; padding-right: 5%; }
+  .hero-copy { padding: 42px 5%; }
+  .hero h1 { font-size: clamp(34px, 9.4vw, 48px); line-height: 1.06; }
+  .hero p { font-size: 13px; }
+  .hero-image { min-height: 300px; }
+  .btn { min-height: 44px; padding: 13px 16px; line-height: 1.4; }
+  .category-card { min-height: clamp(190px, 55vw, 300px); }
+  .products { gap: 22px 9px; }
+  .product-card h3, .product-meta h3 { font-size: 12px; line-height: 1.45; }
+  .product-meta { gap: 5px; flex-wrap: wrap; }
+  .editorial-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px; }
+  .editorial-story-card:last-child { grid-column: auto; max-width: none; }
+  .editorial-card-image { aspect-ratio: 4 / 5; }
+  .footer { padding: 36px 5% 22px; }
+  .footer-inner > * { max-width: 100%; }
+  .sizes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .size-btn { min-width: 42px; min-height: 42px; }
+}
+
+@media (max-width: 360px) {
+  .wordmark { font-size: 19px; letter-spacing: .12em; }
+  .navright { gap: 7px; letter-spacing: .04em; }
+  .hero h1 { font-size: 32px; }
+  .products { gap: 18px 8px; }
+  .product-card h3, .product-meta h3 { font-size: 11px; }
+  .editorial-card-grid { grid-template-columns: minmax(0, 1fr); }
+  .editorial-story-card:last-child { grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
