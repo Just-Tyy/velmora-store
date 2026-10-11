@@ -744,3 +744,25 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .header .navright .bag-toggle { min-width: 31px; padding: 4px; }
   .header .menu-toggle.mobile-only { width: 34px; min-width: 34px; flex-basis: 34px; }
 }
+
+
+/* VELMORA: keep all four homepage category cards in a 2 × 2 grid on mobile.
+   The previous last-child rule made Editorial span the full row. */
+@media (max-width: 680px) {
+  .category-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .category-grid-four > .category-card {
+    grid-column: auto;
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(210px, 62vw, 320px);
+  }
+
+  .category-grid-four > .category-card:last-child {
+    grid-column: auto;
+    min-height: clamp(210px, 62vw, 320px);
+  }
+}
