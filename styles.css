@@ -657,3 +657,90 @@ button, a, input, select, textarea { touch-action: manipulation; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* VELMORA HOTFIX — mobile header/topbar alignment (2026-10) */
+@media (max-width: 680px) {
+  .header { position: sticky; top: 0; z-index: 1000; width: 100%; }
+  .header .nav {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 0;
+    width: 100%; max-width: 100%; min-width: 0;
+    min-height: 68px;
+    padding: 9px 4%;
+    flex-wrap: nowrap;
+  }
+  .header .brand-mark {
+    min-width: 0; max-width: 100%; width: auto;
+    height: auto; flex: initial; gap: 8px;
+    justify-content: flex-start; overflow: hidden;
+  }
+  .header .brand-symbol { width: 38px; height: 38px; flex: 0 0 38px; }
+  .header .brand-symbol img { display:block; width: 34px; height: 30px; object-fit: contain; }
+  .header .brand-wordmark { min-width: 0; gap: 3px; }
+  .header .brand-wordmark > span {
+    font-size: clamp(15px, 4.3vw, 19px);
+    letter-spacing: clamp(.08em, .8vw, .15em);
+    white-space: nowrap;
+  }
+  .header .brand-wordmark small {
+    font-size: clamp(5px, 1.5vw, 6px);
+    letter-spacing: .10em; white-space: nowrap;
+  }
+  .header .navright {
+    display: flex; align-items: center; justify-content: flex-end;
+    min-width: 0; gap: clamp(5px, 2vw, 10px);
+    margin: 0; font-size: 9px; letter-spacing: .04em;
+  }
+  .header .navright button { flex: 0 0 auto; }
+  .header .navright .search-toggle,
+  .header .navright .bag-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 36px; min-height: 38px; gap: 5px;
+    padding: 6px; white-space: nowrap;
+  }
+  .header .navright .search-toggle span { display: none; }
+  .header .navright .search-toggle svg,
+  .header .navright .bag-toggle svg { width: 18px; height: 18px; flex: 0 0 18px; }
+  .header .navright .bag-toggle > span:not(.bag-count) { display: none; }
+  .header .navright .bag-count { font-size: 9px; }
+  .header .navright .account { display: none !important; }
+  .header .menu-toggle.mobile-only {
+    display: grid; place-items: center;
+    width: 38px; height: 38px; min-width: 38px; min-height: 38px;
+    padding: 0; margin: 0; flex: 0 0 38px;
+  }
+  .header .navlinks {
+    display: none; grid-column: 1 / -1; order: initial;
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 1001;
+    width: 100%; max-width: 100%; height: auto; min-width: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    margin: 0; padding: 8px 5% 14px;
+    background: rgba(255,253,250,.98); backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(72,31,42,.12);
+    box-shadow: 0 14px 24px rgba(0,0,0,.08);
+  }
+  .header .navlinks.nav-open { display: flex; }
+  .header .navlinks a {
+    display: block; width: 100%; height: auto;
+    padding: 14px 2px; font-size: 11px; line-height: 1.5;
+    letter-spacing: .14em; white-space: normal;
+    border-bottom: 1px solid rgba(72,31,42,.08);
+  }
+  .header .navlinks a:last-child { border-bottom: 0; }
+}
+@media (max-width: 360px) {
+  .header .nav { padding-left: 3%; padding-right: 3%; column-gap: 5px; }
+  .header .brand-symbol { width: 32px; height: 34px; flex-basis: 32px; }
+  .header .brand-symbol img { width: 30px; height: 28px; }
+  .header .brand-mark { gap: 5px; }
+  .header .brand-wordmark > span { font-size: 14px; letter-spacing: .07em; }
+  .header .brand-wordmark small { font-size: 4.5px; letter-spacing: .07em; }
+  .header .navright { gap: 3px; }
+  .header .navright .search-toggle,
+  .header .navright .bag-toggle { min-width: 31px; padding: 4px; }
+  .header .menu-toggle.mobile-only { width: 34px; min-width: 34px; flex-basis: 34px; }
+}
